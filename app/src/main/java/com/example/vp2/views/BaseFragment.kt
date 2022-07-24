@@ -14,6 +14,7 @@ import retrofit2.Response
 open class BaseFragment: Fragment() {
 
     protected val playerParam = getPlayerParam()
+    open fun fetchPlayerService(): PlayerService = PlayerService.getInstance()
 
     companion object {
         var param = ""

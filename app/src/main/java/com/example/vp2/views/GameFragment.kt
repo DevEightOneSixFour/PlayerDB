@@ -20,12 +20,28 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GameFragment(
-    private val playerService: PlayerService,
-    private val platform: String
-) : BaseFragment() {
+class GameFragment : BaseFragment() {
+
+    companion object {
+        const val PLATFORM_KEY = "platform_key"
+
+        fun getNewGamerFragment(platform: String): GameFragment {
+            val fragment = GameFragment()
+            val bundle = Bundle()
+            bundle.putString(PLATFORM_KEY, platform)
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
 
     lateinit var binding: FragmentGameBinding
+
+    private val platform: String? by lazy {
+        arguments?.getString(PLATFORM_KEY)
+    }
+    private val playerService: PlayerService by lazy {
+        fetchPlayerService()
+    }
     var playerResponse = PlayerResponse(
         data = Data(
             player = Player(
@@ -44,7 +60,7 @@ class GameFragment(
     ): View {
         binding = FragmentGameBinding.inflate(layoutInflater)
 
-        fetchData(platform, playerParam)
+        fetchData(platform!!, playerParam)
         updateBackground()
 
         return binding.root
