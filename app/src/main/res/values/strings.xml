@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VP2</string>
+    <string name="enter_player_name">Enter Player Name</string>
+    <string name="load_player">load player</string>
+</resources>
