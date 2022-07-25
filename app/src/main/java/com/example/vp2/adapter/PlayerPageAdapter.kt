@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.vp2.constants.MINECRAFT
 import com.example.vp2.constants.STEAM
 import com.example.vp2.constants.XBOX
+import com.example.vp2.views.ConstructFragment
 
 class PlayerPageAdapter(
     fragmentManager: FragmentManager,
@@ -23,5 +24,10 @@ class PlayerPageAdapter(
             1 -> GameFragment.getNewGamerFragment(XBOX.lowercase())
             else -> GameFragment.getNewGamerFragment(MINECRAFT.lowercase())
         }
+//        return when(position) {
+//            0 -> ConstructFragment(STEAM.lowercase())
+//            1 -> ConstructFragment(XBOX.lowercase())
+//            else -> ConstructFragment(MINECRAFT.lowercase())
+//        }
     }
 }
